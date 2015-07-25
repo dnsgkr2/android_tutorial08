@@ -26,9 +26,10 @@
         android:layout_below="@id/textID"/>
 
     <EditText
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/textID"
+        android:layout_alignBottom="@id/textPW"
         android:layout_toRightOf="@id/textPW"/>
 
     <Button
