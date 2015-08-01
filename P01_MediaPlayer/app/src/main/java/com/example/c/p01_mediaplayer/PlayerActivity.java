@@ -1,5 +1,6 @@
-package com.example.c.t11_mediaplayer;
+package com.example.c.p01_mediaplayer;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,34 +14,34 @@ import android.widget.ProgressBar;
 import java.io.IOException;
 
 
-public class MainActivity extends ActionBarActivity {
-    MediaPlayer mp = null;
+public class PlayerActivity extends ActionBarActivity {
     ProgressBar progressBar;
+    MediaPlayer mp = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        Button btnPlay =(Button)findViewById(R.id.btnPlay);
-        Button btnStop =(Button)findViewById(R.id.btnStop);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        setContentView(R.layout.activity_new);
 
-       // mp.getCurrentPosition();
-       // mp.getDuration();
+        Button btnPlay = (Button) findViewById(R.id.btnPlay);
+        Button btnStop = (Button) findViewById(R.id.btnStop);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){
-                    if(mp != null){
+                    if(mp !=null){
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        float progress = (float)mp.getCurrentPosition() / (float)mp.getDuration();
-                        progressBar.setProgress((int)(progress *100));
-                      //  progressBar.setProgress(mp.getCurrentPosition());
+                       // if(mp !=null) {
+                       // if(mp.isPlaying()) {
+                            float progress = (float) mp.getCurrentPosition() / (float) mp.getDuration();
+                            progressBar.setProgress((int) (progress * 100));
+                       // }
+                       // }
                     }
                 }
             }
@@ -50,7 +51,12 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String path = Environment.getExternalStorageDirectory().toString();
-                path +="/media/audio/notifications/aa.mp3";
+                //path+="/Music/aa.mp3";
+                Intent intent = getIntent();
+                String fileName = intent.getExtras().getString("name");
+
+                path+="/Music"+"/"+fileName;
+
                 mp = new MediaPlayer();
 
                 try {
@@ -60,14 +66,13 @@ public class MainActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }
                 mp.start();
-               // progressBar.setMax(mp.getDuration());
             }
         });
 
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mp != null){
+                if(mp != null) {
                     mp.stop();
                     mp.release();
                     mp = null;
@@ -79,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_new, menu);
         return true;
     }
 
