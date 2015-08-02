@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".MyCustomBR">
+            <intent-filter>
+                <action android:name="com.example.c.t16_br3.MyCustomBR"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
