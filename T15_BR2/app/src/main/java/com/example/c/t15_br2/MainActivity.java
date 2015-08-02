@@ -1,17 +1,56 @@
 package com.example.c.t15_br2;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            /*String action = intent.getAction();
+            if(action.equals(Intent.ACTION_BATTERY_CHANGED)){
+
+            }else if(action.equals(Intent.ACTION_BATTERY_LOW)){
+
+            }*/
+
+            Toast.makeText(context,"SMS RECEIVED",Toast.LENGTH_SHORT).show();
+            Log.d("MyBR2","SMS RECEIVED");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.provider.Telephony.SMS_RECEIVED");
+        //filter.addAction(Intent.ACTION_BATTERY_CHANGED);
+        registerReceiver(receiver,filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        unregisterReceiver(receiver);
     }
 
     @Override
