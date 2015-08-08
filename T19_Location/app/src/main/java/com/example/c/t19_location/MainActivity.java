@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         textView = (TextView) findViewById(R.id.textView);
-        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        //imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         editAddress = (EditText)findViewById(R.id.editAddress);
         editLat = (EditText) findViewById(R.id.editLatitude);
@@ -133,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
                     editAddress.setText(list.get(0).toString());
                 }
 
-               // imm.hideSoftInputFromWindow(editAddress.getWindowToken(),0);
+               //imm.hideSoftInputFromWindow(editAddress.getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
