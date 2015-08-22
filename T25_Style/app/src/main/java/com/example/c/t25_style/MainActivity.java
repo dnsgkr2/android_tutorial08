@@ -33,7 +33,11 @@ public class MainActivity extends ActionBarActivity {
 
                 Button b = (Button)v;
                 String str = workingTextView.getText().toString();
-                str+= b.getText().toString();
+                if(str.equals("0"))
+                    str = b.getText().toString();
+                else
+                    str+= b.getText().toString();
+
                 workingTextView.setText(str);
             }
         };
@@ -45,10 +49,9 @@ public class MainActivity extends ActionBarActivity {
 
 
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayout);
-        for(int i=2; i<tableLayout.getChildCount(); i++) {
+        int number = 1;
+        for(int i=2; i<tableLayout.getChildCount()-1; i++) {
             TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
-
-            int number = 1;
             for (int k = 0; k < tableRow.getChildCount(); k++) {
                 Button button = (Button) tableRow.getChildAt(k);
                 button.setText("" + number);
@@ -57,12 +60,16 @@ public class MainActivity extends ActionBarActivity {
             }
             int bottomCount = tableLayout.getChildCount();
             TableRow bottomRow = (TableRow) tableLayout.getChildAt(bottomCount - 1);
+
+
+
             Button deleteButton = (Button) bottomRow.getChildAt(0);
-            deleteButton.setText(" Áö¿ò");
+            deleteButton.setText(" ì§€ì›€");
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     workingTextView.setText("0");
+                    selectedTextView.setText("0");
                 }
             });
 
@@ -71,6 +78,7 @@ public class MainActivity extends ActionBarActivity {
             zeroButton.setOnClickListener(numberButtonListener);
 
             Button enterButton = (Button) bottomRow.getChildAt(2);
+            enterButton.setText("í™•ì¸");
             enterButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
