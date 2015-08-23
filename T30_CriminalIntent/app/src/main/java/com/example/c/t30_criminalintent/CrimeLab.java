@@ -5,8 +5,8 @@ import java.util.UUID;
 
 /**
  * Created by c on 2015-08-22.
- * ¾î·¹ÀÌ¸®½ºÆ®¸¦ ´ãÀ»¼ö ÀÖ´Â Å¬·¡½º  ½Ì±ÛÅÏ... ½ºÅÂÆ½Æ¯¼ºÀÌ¿ëÇØ¼­ »ı¼º(ÇÁ·Î±×·¥¿¡¼­ ÇÏ³ª¸¸ Á¸Àç...
- * ÇÁ·Î±×·¥ ½ÇÇàµÉ¶§ ¹Ì¸® ÇÑ¹ø¸¸ ·Îµù
+ * ì–´ë ˆì´ë¦¬ìŠ¤íŠ¸ë¥¼ ë‹´ì„ìˆ˜ ìˆëŠ” í´ë˜ìŠ¤  ì‹±ê¸€í„´... ìŠ¤íƒœí‹±íŠ¹ì„±ì´ìš©í•´ì„œ ìƒì„±(í”„ë¡œê·¸ë¨ì—ì„œ í•˜ë‚˜ë§Œ ì¡´ì¬...
+ * í”„ë¡œê·¸ë¨ ì‹¤í–‰ë ë•Œ ë¯¸ë¦¬ í•œë²ˆë§Œ ë¡œë”©
  */
 public class CrimeLab {
     private ArrayList<Crime> mCrimes;
@@ -23,7 +23,7 @@ public class CrimeLab {
         mCrimes = new ArrayList<Crime>();
          for(int i =0; i<100; i++){
              Crime c = new Crime();
-             c.setTitle("¹üÁË " + i);
+             c.setTitle("ë²”ì£„ " + i);
              c.setSolved(i%2==0);
              mCrimes.add(c);
          }
