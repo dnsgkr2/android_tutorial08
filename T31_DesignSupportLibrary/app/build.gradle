@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.example.c.t30_criminalintent"
+        applicationId "com.example.c.t31_designsupportlibrary"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
